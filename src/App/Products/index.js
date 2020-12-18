@@ -22,8 +22,8 @@ export default function Products({ setCart, cart }) {
         const isAleadyInCart = cart.find((cartItem) => cartItem === product);
 
         if (isAleadyInCart) {
-            const cartProductIndex = cart.findIndex((cartItem) => cartItem === product); 
             product.quantity++;
+            const cartProductIndex = cart.findIndex((cartItem) => cartItem === product); 
             cart[cartProductIndex] = product;
             setCart([...cart]);
         } else {
