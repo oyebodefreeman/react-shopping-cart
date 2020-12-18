@@ -19,10 +19,7 @@ const products = [
 export default function Products({ setCart, cart }) {
     const addToCart = (product) => { 
 
-        const isAleadyInCart = cart.find((cartItem) => {
-            if (cartItem === product) return true;
-            return false;
-        });
+        const isAleadyInCart = cart.find((cartItem) => cartItem === product);
 
         if (isAleadyInCart) {
             const cartProductIndex = cart.findIndex((cartItem) => cartItem === product); 
