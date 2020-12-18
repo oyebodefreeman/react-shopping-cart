@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useCart } from '../../hooks/use-cart'
+
 
 const products = [
     {
@@ -16,28 +18,15 @@ const products = [
     }
 ]
 
-export default function Products({ setCart, cart }) {
-    const addToCart = (product) => { 
-
-        const isAleadyInCart = cart.find((cartItem) => cartItem === product);
-
-        if (isAleadyInCart) {
-            product.quantity++;
-            const cartProductIndex = cart.findIndex((cartItem) => cartItem === product); 
-            cart[cartProductIndex] = product;
-            setCart([...cart]);
-        } else {
-            setCart([...cart, product]);
-        }
-       
-    }
+export default function Products() {
+   const cart = useCart();
     return (
         <div>
             {products.map((product, index) => {
                 return (
                     <div key={`product-${index}`}>
                         <h4>{product.name}</h4>
-                        <button onClick={() => addToCart(product)}>Add To Cart</button>
+                        <button onClick={() => cart.addItem(product)}>Add To Cart</button>
                     </div>
                 ); 
             })}

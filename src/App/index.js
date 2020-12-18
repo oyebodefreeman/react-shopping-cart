@@ -1,16 +1,18 @@
-import  React, { Fragment, useState } from 'react';
+import  React from 'react';
+
 import Products from './Products';
 import Cart from './Cart';
 
+import { ProvideCart } from '../hooks/use-cart'
+
 export default function App() {
-    const [cart, setCart] = useState([]);
     return (
-        <Fragment>
-            <Cart cart={cart} />
+        <ProvideCart>
+            <Cart/>
             <div>
                 <h1>Fruits Shop</h1>
-                <Products cart={cart} setCart={setCart}/>
+                <Products/>
             </div>
-        </Fragment>
+        </ProvideCart>
     )
 }
