@@ -9,9 +9,9 @@ export default function App() {
             <h1>Cart</h1>
             {cart.cartItems.length === 0 ? <div>Cart is empty</div> : (
                 <ul>
-                {cart.cartItems.map((item, index) => {
-                   return  <li key={`cart-${index}`}>{item.name} x{item.quantity}</li>
-               })}
+                    {cart.cartItems.map((item, index) => {
+                        return  <li key={`cart-${index}`}>{item.name} x{item.quantity}</li>
+                    })}
                 </ul>
             )}
             
