@@ -10,7 +10,12 @@ export default function App() {
             {cart.cartItems.length === 0 ? <div>Cart is empty</div> : (
                 <ul>
                     {cart.cartItems.map((item, index) => {
-                        return  <li key={`cart-${index}`}>{item.name} x{item.quantity}</li>
+                        return  (
+                            <li key={`cart-${index}`}>
+                                {item.name} x{item.quantity} 
+                                <button onClick={() => cart.removeItem(item)}>Remove</button>
+                            </li>
+                        )
                     })}
                 </ul>
             )}

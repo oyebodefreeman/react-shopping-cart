@@ -16,8 +16,8 @@ function useProvideCart () {
     const [cartItems, setCartItems] = useLocalStorage('cart', []);
 
     const addItem = (item) => { 
-
-        const isAleadyInCart = cartItems.find((cartItem) => cartItem === item);
+        
+        const isAleadyInCart = cartItems.includes(item);
 
         if (isAleadyInCart) {
             item.quantity++;
@@ -30,5 +30,14 @@ function useProvideCart () {
        
     }
 
-    return { cartItems, addItem }
+    const removeItem = (item) => {
+        const cartItemIndex = cartItems.findIndex((cartItem) => cartItem === item);
+        if (cartItemIndex > -1 ) {
+            cartItems.splice(cartItemIndex, 1);
+            setCartItems([...cartItems]);
+        }
+
+    }
+
+    return { cartItems, addItem, removeItem }
 }
